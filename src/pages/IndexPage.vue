@@ -4,7 +4,7 @@
       alt="Quasar logo"
       src="~assets/quasar-logo-vertical.svg"
       style="width: 200px; height: 200px"
-    />
+    />{{ roles }}
   </q-page>
 </template>
 
@@ -19,8 +19,11 @@ import axios from "axios";
 export default defineComponent({
   name: "IndexPage",
   computed: {
-    roleRepo() {
-      return useRepo(RoleRepo); //.setAxios(this.ax);
+    // roleRepo() {
+    //   return useRepo(RoleRepo); //.setAxios(this.ax);
+    // },
+    roles() {
+      return this.roleRepo.all();
     },
   },
   methods: {
@@ -37,11 +40,13 @@ export default defineComponent({
     this.fetchRoles();
   },
   setup() {
+    const roleRepo = useRepo(RoleRepo);
     // const ax = axios.create({
     //   baseURL: "/api",
     //   withCredentials: false,
     // });
     // return { ax };
+    return { roleRepo };
   },
 });
 </script>
