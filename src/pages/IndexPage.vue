@@ -20,7 +20,7 @@ export default defineComponent({
   name: "IndexPage",
   computed: {
     roleRepo() {
-      return useRepo(RoleRepo).setAxios(this.ax);
+      return useRepo(RoleRepo); //.setAxios(this.ax);
     },
   },
   methods: {
@@ -37,11 +37,11 @@ export default defineComponent({
     this.fetchRoles();
   },
   setup() {
-    const ax = axios.create({
-      baseURL: "/api",
-      withCredentials: false,
-    });
-    return { ax };
+    // const ax = axios.create({
+    //   baseURL: "/api",
+    //   withCredentials: false,
+    // });
+    // return { ax };
   },
 });
 </script>
